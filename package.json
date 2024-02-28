@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build specified\" && exit 1",
     "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codingyuan0928/mern-project.git"
   },
   "author": "Leon Chang",
   "license": "ISC",
@@ -25,5 +30,9 @@
     "passport": "^0.3.2",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/codingyuan0928/mern-project/issues"
+  },
+  "homepage": "https://github.com/codingyuan0928/mern-project#readme"
 }
