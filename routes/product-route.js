@@ -38,7 +38,7 @@ router.get("/:category?", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({ success: false, message: "Internal Service Error" });
+    res.status(500).json({ success: false, message: err });
   }
 });
 //買家查詢所有商品
