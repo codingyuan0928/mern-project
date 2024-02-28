@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/carts";
+const API_URL = "https://weak-gray-bison-hat.cyclic.app/api/carts";
 
 class CartsService {
   post(userId, shopname, productId, quantity, price) {
