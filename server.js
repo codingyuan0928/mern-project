@@ -12,6 +12,8 @@ const passport = require("passport");
 require("./config/passport")(passport);
 const cartRoute = require("./routes").cart;
 const orderRoute = require("./routes").order;
+const path = require("path");
+const port = process.env.PORT || 8080;
 //connect to mongoDB
 mongoose
   .connect(process.env.DB_CONNECT, { dbName: "BW" })
@@ -25,6 +27,7 @@ mongoose
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cors());
+app.use(express.static(path.join(__dirname, "frontend", "build")));
 //觀察req.body
 app.use((req, res, next) => {
   console.log("Request body:", req.body);
@@ -39,8 +42,14 @@ app.use(
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 
-const port = process.env.PORT || 8080;
-
+if (
+  process.env.NODE_ENV === "production" ||
+  process.env.NODE_ENV === "staging"
+) {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  });
+}
 app.listen(port, () => {
   console.log(`Server running on port ${port} .`);
 });
