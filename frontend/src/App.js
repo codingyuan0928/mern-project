@@ -22,8 +22,9 @@ const App = () => {
   let [currentSearch, setCurrentSearch] = useState(""); //解決搜尋紀錄影響input的問題
   const [quantity, setQuantity] = useState(1);
   const auth = JSON.parse(localStorage.getItem("user")).token;
-  const initialUrl = "http://localhost:8080/api/products?page=1&per_page=15";
-  const searchUrl = `http://localhost:8080/api/products/findByName/${currentSearch}?page=1&per_page=15`;
+  const initialUrl =
+    "https://weak-gray-bison-hat.cyclic.app/api/products?page=1&per_page=15";
+  const searchUrl = `https://weak-gray-bison-hat.cyclic.app/api/products/findByName/${currentSearch}?page=1&per_page=15`;
   const [hasMoreProducts, setHasMoreProducts] = useState(true);
 
   // fetch data from restful api
@@ -60,9 +61,9 @@ const App = () => {
     let newUrl;
 
     if (input === "") {
-      newUrl = `http://localhost:8080/api/products?page=${page}&per_page=15`;
+      newUrl = `https://weak-gray-bison-hat.cyclic.app/api/products?page=${page}&per_page=15`;
     } else {
-      newUrl = `http://localhost:8080/api/products/findByName/${currentSearch}?page=${page}&per_page=15`;
+      newUrl = `https://weak-gray-bison-hat.cyclic.app/api/products/findByName/${currentSearch}?page=${page}&per_page=15`;
     }
     setPage(page + 1);
     try {
@@ -94,7 +95,7 @@ const App = () => {
 
   //點選不同種類商品
   const handleDifCatProducts = (category) => {
-    const catUrl = `http://localhost:8080/api/products/${category}?page=1&per_page=15`;
+    const catUrl = `https://weak-gray-bison-hat.cyclic.app/api/products/${category}?page=1&per_page=15`;
     search(catUrl, (filteredData) => {
       setData(filteredData);
     });
