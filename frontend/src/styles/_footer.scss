@@ -1,0 +1,163 @@
+.footer {
+  background-color: #d9d9d9;
+  padding-top: 2rem;
+  margin-top: 0.5rem;
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 2rem 10vw 2rem 10vw;
+    .follow-us {
+      .h5 {
+        font-weight: 800;
+        font-size: 1.5rem;
+        margin-left: 0.25rem;
+        margin-bottom: 1rem;
+      }
+      .ul {
+        list-style-type: none;
+        padding-left: 0;
+        .li {
+          margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
+          a {
+            text-decoration: none;
+            color: black;
+          }
+          i.fb {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            display: inline;
+            vertical-align: middle;
+            color: blue;
+          }
+          i.ig {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            display: inline;
+            vertical-align: middle;
+            color: red;
+          }
+          i.line {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            display: inline;
+            vertical-align: middle;
+            color: rgb(1, 183, 1);
+          }
+          .h6 {
+            display: inline;
+            font-size: 1.25rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+    .customer-service-center {
+      .h5 {
+        font-weight: 800;
+        font-size: 1.5rem;
+        margin-left: 0.25rem;
+        margin-bottom: 1rem;
+      }
+      .ul {
+        list-style-type: none;
+        padding-left: 0;
+        .li {
+          a {
+            text-decoration: none;
+            color: black;
+          }
+          .help {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            display: inline;
+            vertical-align: middle;
+          }
+          .h6 {
+            display: inline;
+            font-size: 1.25rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+    .download-best-way {
+      .h5 {
+        font-weight: 800;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .download-area {
+        display: flex;
+        flex-direction: row;
+        .download-qrcode {
+          img.bwqrcode {
+            width: 5rem;
+            height: 5rem;
+          }
+        }
+        .download-list {
+          .ul {
+            list-style-type: none;
+            padding-left: 1rem;
+            .li {
+              margin-bottom: 0.5rem;
+              a {
+                text-decoration: none;
+                color: black;
+              }
+              .apple {
+                font-size: 1.5rem;
+                margin-right: 0.5rem;
+                display: inline;
+                vertical-align: middle;
+              }
+              img.playstore {
+                width: 2rem;
+                height: 1.5rem;
+              }
+              .h6 {
+                display: inline;
+                font-size: 1.25rem;
+                font-weight: 400;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .copyright {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 480px) {
+  .footer {
+    .footer-container {
+      flex-direction: column;
+    }
+    .copyright {
+      justify-content: start;
+      margin-left: 10vw;
+    }
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .footer {
+    .footer-container {
+      flex-direction: column;
+    }
+    .copyright {
+      justify-content: start;
+      margin-left: 10vw;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1085px) {
+}

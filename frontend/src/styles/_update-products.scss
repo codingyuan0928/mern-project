@@ -1,0 +1,213 @@
+.update-product-page {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 2rem 2rem 0rem 2rem;
+  .product-img-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 80vw;
+    .img-box {
+      border: 2px dashed black;
+      width: 6rem;
+      height: 6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-left: 2rem;
+      cursor: pointer;
+      position: relative;
+      .icon {
+        transform: translateY(25%);
+        font-size: 3rem;
+
+        color: black;
+        font-size: 1.5rem;
+      }
+      .p {
+        transform: translateY(25%);
+        font-size: 1rem;
+      }
+      .file-des {
+        position: absolute;
+        left: 0vw;
+        top: 6.5rem;
+        width: 50rem;
+        font-size: 1rem;
+        color: red;
+        pointer-events: none;
+      }
+      .preview-image {
+        width: 12rem;
+        height: 6rem;
+        position: absolute;
+        right: -15rem;
+        pointer-events: none;
+        border: 2px solid gray;
+      }
+      .comment {
+        position: absolute;
+        color: red;
+        font-size: 1rem;
+        width: 50vw;
+        pointer-events: none;
+        left: 8rem;
+        top: 4.5rem;
+      }
+    }
+  }
+  .product-name {
+    margin-top: 4rem;
+    input {
+      margin-left: 2rem;
+    }
+  }
+  .categories {
+    margin-top: 4rem;
+    select {
+      margin-left: 1rem;
+    }
+  }
+  .product-description {
+    margin-top: 4rem;
+    display: flex;
+    align-items: flex-start;
+    #product-des {
+      margin-left: 2rem;
+    }
+  }
+  .products-number {
+    margin-top: 4rem;
+    .product-number-input {
+      margin-left: 2rem;
+      width: 7rem;
+      -webkit-appearance: none;
+      -moz-appearance: textfield; /* Firefox */
+      appearance: textfield;
+    }
+    .product-number-input::-webkit-inner-spin-button,
+    .product-number-input::-webkit-outer-spin-button {
+      -webkit-appearance: none !important;
+      margin: 0;
+    }
+  }
+  .products-price {
+    margin-top: 4rem;
+    .product-price-input {
+      margin-left: 2rem;
+      width: 7rem;
+      -webkit-appearance: none;
+      -moz-appearance: textfield; /* Firefox */
+      appearance: textfield;
+    }
+    .product-price-input::-webkit-inner-spin-button,
+    .product-price-input::-webkit-outer-spin-button {
+      -webkit-appearance: none !important;
+      margin: 0;
+    }
+    span {
+      font-weight: 400;
+      font-size: 1.25rem;
+      margin-left: 2rem;
+      vertical-align: bottom;
+    }
+  }
+  .button-group {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5rem;
+
+    button {
+      margin: 3rem;
+      padding: 0.5rem 2rem;
+      font-weight: 600;
+      &:hover {
+        opacity: 0.6;
+      }
+      &.cancel {
+        background-color: white;
+        border-radius: 5px;
+        border: 2px solid rgba(0, 0, 0, 0.3);
+        padding: 0.5rem 2rem;
+      }
+      &.selling {
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        border: 2px solid rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .update-product-page {
+    font-size: 1rem;
+    .product-img-group {
+      .img-box {
+        width: 4rem;
+        height: 4rem;
+
+        .p {
+          font-size: 0.8rem;
+        }
+        .preview-image {
+          width: 8rem;
+          height: 4rem;
+          right: -9rem;
+        }
+        .file-des {
+          width: 50vw;
+          font-size: 0.8rem;
+          top: 5rem;
+        }
+        .comment {
+          top: 5rem;
+          left: 0rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+    .products-price {
+      span {
+        display: flex;
+        white-space: nowrap;
+        margin-left: 0rem;
+        font-size: 1rem;
+        margin-top: 2rem;
+      }
+    }
+    .button-group {
+      font-size: 1rem;
+      button {
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .update-product-page {
+    font-size: 1.25rem;
+    .product-img-group {
+      .img-box {
+        position: relative;
+        .preview-image {
+          width: 10rem;
+          right: -12rem;
+        }
+        .file-des {
+          width: 50vw;
+        }
+      }
+    }
+    .button-group {
+      font-size: 1.25rem;
+      button {
+        margin: 1rem;
+      }
+    }
+  }
+}
