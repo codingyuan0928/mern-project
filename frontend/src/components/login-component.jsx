@@ -5,14 +5,7 @@ import AuthService from "../services/auth.service";
 const LoginComponent = (props) => {
   const emailInputRef = useRef(null);
   const passwordInputRef = useRef(null);
-  const {
-    currentUser,
-    setCurrentUser,
-    avatar,
-    setAvatar,
-    identity,
-    setIdentity,
-  } = props;
+  const { currentUser, setCurrentUser, setIdentity } = props;
   const history = useHistory();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");

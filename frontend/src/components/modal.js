@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import cartsService from "../services/carts.service";
 import { useHistory } from "react-router-dom";
-import productsService from "../services/products.service";
 
 const Modal = ({
   open,
@@ -23,9 +22,9 @@ const Modal = ({
     const shopname = data.shopname;
     const userId = currentUser._id;
     console.log(userId, shopname, productId, quantity, price);
-    if (identity == "seller") {
+    if (identity === "seller") {
       window.alert("請切換成買家身分");
-    } else if (identity == "visitor") {
+    } else if (identity === "visitor") {
       window.alert("請先登入以查看購物車");
       document.body.style.overflow = "auto";
       window.scrollTo({ top: 0, behavior: "smooth" });
