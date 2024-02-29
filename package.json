@@ -5,12 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo \"Error: no build specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/codingyuan0928/mern-project.git"
   },
   "author": "Leon Chang",
   "license": "ISC",
@@ -31,8 +27,7 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0"
   },
-  "bugs": {
-    "url": "https://github.com/codingyuan0928/mern-project/issues"
-  },
-  "homepage": "https://github.com/codingyuan0928/mern-project"
+  "engines": {
+    "node": "18.17.1"
+  }
 }
