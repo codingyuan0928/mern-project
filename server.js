@@ -13,7 +13,7 @@ require("./config/passport")(passport);
 const cartRoute = require("./routes").cart;
 const orderRoute = require("./routes").order;
 const path = require("path");
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 //connect to mongoDB
 mongoose
   .connect(process.env.DB_CONNECT, { dbName: "BW" })
