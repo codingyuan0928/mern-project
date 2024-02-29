@@ -28,6 +28,6 @@
     "passport-local": "^1.0.0"
   },
   "engines": {
-    "node": "20.11.1"
+    "node": "18.18.2"
   }
 }
