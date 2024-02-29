@@ -24,7 +24,8 @@
     "nodemon": "^3.0.2",
     "passport": "^0.3.2",
     "passport-jwt": "^4.0.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react-scripts": "^5.0.1"
   },
   "engines": {
     "node": "18.18.2"
