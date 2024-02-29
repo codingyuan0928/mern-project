@@ -148,7 +148,7 @@ const App = () => {
         setHasMoreProducts={setHasMoreProducts}
       />
       <Switch>
-        <Route path="/" exact>
+        <Route path="/login" exact>
           <Modal
             open={modalOpenIndex !== null}
             data={data && data.data && data.data[modalOpenIndex]}
@@ -189,7 +189,7 @@ const App = () => {
             setAvatar={setAvatar}
           />
         </Route>
-        <Route path="/login" exact>
+        <Route path="/" exact>
           <LoginComponent
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
