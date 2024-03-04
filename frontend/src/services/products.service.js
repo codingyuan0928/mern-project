@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-const API_URL = "https://weak-gray-bison-hat.cyclic.app/api/products";
+const API_URL = "http://localhost:8080/api/products";
 const auth = JSON.parse(localStorage.getItem("user")).token;
 
 class ProductService {

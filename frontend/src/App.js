@@ -21,10 +21,9 @@ const App = () => {
   let [page, setPage] = useState(1); //去解決增加相片的問題
   let [currentSearch, setCurrentSearch] = useState(""); //解決搜尋紀錄影響input的問題
   const [quantity, setQuantity] = useState(1);
-  const auth = JSON.parse(localStorage.getItem("user")).token;
-  const initialUrl =
-    "https://weak-gray-bison-hat.cyclic.app/api/products?page=1&per_page=15";
-  const searchUrl = `https://weak-gray-bison-hat.cyclic.app/api/products/findByName/${currentSearch}?page=1&per_page=15`;
+  // const auth = JSON.parse(localStorage.getItem("user")).token;
+  const initialUrl = "http://localhost:8080/api/products?page=1&per_page=15";
+  const searchUrl = `http://localhost:8080/api/products/findByName/${currentSearch}?page=1&per_page=15`;
   const [hasMoreProducts, setHasMoreProducts] = useState(true);
 
   // fetch data from restful api
@@ -61,9 +60,9 @@ const App = () => {
     let newUrl;
 
     if (input === "") {
-      newUrl = `https://weak-gray-bison-hat.cyclic.app/api/products?page=${page}&per_page=15`;
+      newUrl = `http://localhost:8080/api/products?page=${page}&per_page=15`;
     } else {
-      newUrl = `https://weak-gray-bison-hat.cyclic.app/api/products/findByName/${currentSearch}?page=${page}&per_page=15`;
+      newUrl = `http://localhost:8080/api/products/findByName/${currentSearch}?page=${page}&per_page=15`;
     }
     setPage(page + 1);
     try {
@@ -95,7 +94,7 @@ const App = () => {
 
   //點選不同種類商品
   const handleDifCatProducts = (category) => {
-    const catUrl = `https://weak-gray-bison-hat.cyclic.app/api/products/${category}?page=1&per_page=15`;
+    const catUrl = `http://localhost:8080/api/products/${category}?page=1&per_page=15`;
     search(catUrl, (filteredData) => {
       setData(filteredData);
     });
