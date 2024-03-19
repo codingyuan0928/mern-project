@@ -17,7 +17,7 @@ const UpdateProductsComponent = (props) => {
   });
   const [message, setMessage] = useState("");
   const history = useHistory();
-  const { currentUser, setCurrentUser } = props;
+  const { currentUser } = props;
 
   const handleChange = (e, field) => {
     setProductsData((prevProductsData) => ({
@@ -76,7 +76,7 @@ const UpdateProductsComponent = (props) => {
     }
   };
 
-  // 使用 useEffect 監聽 productsData 的變化，只有在 productsData 變化时才进行 post 操作
+  // 使用 useEffect 監聽 productsData 的變化，只有在 productsData 變化時才進行 post 操作
   useEffect(() => {
     if (productsData.shopname) {
       postProducts();
@@ -152,25 +152,25 @@ const UpdateProductsComponent = (props) => {
           <option disabled selected>
             請選擇商品種類
           </option>
-          <option value="優惠&精選">優惠&精選</option>
+          <option value="精選">精選</option>
           <option value="雜貨">雜貨</option>
           <option value="電子產品">電子產品</option>
           <option value="電子遊戲">電子遊戲</option>
-          <option value="家俱&家電">家俱&家電</option>
+          <option value="家俱">家俱</option>
           <option value="玩具">玩具</option>
           <option value="嬰兒">嬰兒</option>
-          <option value="汽車&輪胎">汽車&輪胎</option>
+          <option value="汽車">汽車</option>
           <option value="電影">電影</option>
           <option value="書籍">書籍</option>
-          <option value="藥物&健康">藥物&健康</option>
+          <option value="健康">健康</option>
           <option value="個人護理">個人護理</option>
           <option value="美妝">美妝</option>
           <option value="寵物">寵物</option>
-          <option value="家務&居家">家務&居家</option>
-          <option value="運動&戶外">運動&戶外</option>
-          <option value="學校&辦公">學校&辦公</option>
-          <option value="派對&節慶">派對&節慶</option>
-          <option value="藝術&音樂">藝術&音樂</option>
+          <option value="家庭用品">家庭用品</option>
+          <option value="運動">運動</option>
+          <option value="辦公">辦公</option>
+          <option value="慶祝">慶祝</option>
+          <option value="藝術">藝術</option>
           <option value="禮品">禮品</option>
           <option value="其他">其他</option>
         </select>
@@ -206,7 +206,6 @@ const UpdateProductsComponent = (props) => {
       </div>
       <div className="button-group">
         <button className="cancel">取消</button>
-        {/* <button className="store">儲存商品不上架</button> */}
         <button className="selling" onClick={postProducts}>
           儲存商品並上架
         </button>

@@ -1,18 +1,10 @@
 import ProductDisplayComponent from "./product-display-component";
-import React, { useEffect } from "react";
-import productsService from "../services/products.service";
-
+import React from "react";
+import LoadingC from "./Loading-component";
 const HomeComponent = (props) => {
   const {
     data,
-    setData,
-    currentUser,
-    setCurrentUser,
-    initialUrl,
-    currentSearch,
-    searchUrl,
     moreProducts,
-    search,
     modalOpenIndex,
     setModalOpenIndex,
     handleDifCatProducts,
@@ -119,23 +111,14 @@ const HomeComponent = (props) => {
         <table className="cat ">
           <tbody>
             <tr>
-              <td onClick={() => handleDifCatProducts("優惠&精選")}>
-                <a>
-                  優惠
-                  <br />
-                  & <br />
-                  精選
-                </a>
+              <td onClick={() => handleDifCatProducts("精選")}>
+                <a>精選</a>
               </td>
               <td onClick={() => handleDifCatProducts("雜貨")}>
                 <a>雜貨</a>
               </td>
-              <td onClick={() => handleDifCatProducts("服鞋&配飾")}>
-                <a>
-                  服鞋 <br />
-                  & <br />
-                  配飾
-                </a>
+              <td onClick={() => handleDifCatProducts("服飾")}>
+                <a>服飾</a>
               </td>
               <td onClick={() => handleDifCatProducts("電子產品")}>
                 <a>電子產品</a>
@@ -143,12 +126,8 @@ const HomeComponent = (props) => {
               <td onClick={() => handleDifCatProducts("電子遊戲")}>
                 <a>電子遊戲</a>
               </td>
-              <td onClick={() => handleDifCatProducts("家俱&家電")}>
-                <a>
-                  家俱
-                  <br />&<br />
-                  家電
-                </a>
+              <td onClick={() => handleDifCatProducts("家俱")}>
+                <a>家俱</a>
               </td>
               <td onClick={() => handleDifCatProducts("玩具")}>
                 <a>玩具</a>
@@ -156,12 +135,8 @@ const HomeComponent = (props) => {
               <td onClick={() => handleDifCatProducts("嬰兒")}>
                 <a>嬰兒</a>
               </td>
-              <td onClick={() => handleDifCatProducts("汽車&輪胎")}>
-                <a>
-                  汽車
-                  <br />&<br />
-                  輪胎
-                </a>
+              <td onClick={() => handleDifCatProducts("汽車")}>
+                <a>汽車</a>
               </td>
               <td onClick={() => handleDifCatProducts("電影")}>
                 <a>電影</a>
@@ -171,12 +146,8 @@ const HomeComponent = (props) => {
               </td>
             </tr>
             <tr>
-              <td onClick={() => handleDifCatProducts("藥物&健康")}>
-                <a>
-                  藥物 <br />
-                  & <br />
-                  健康
-                </a>
+              <td onClick={() => handleDifCatProducts("健康")}>
+                <a>健康</a>
               </td>
               <td onClick={() => handleDifCatProducts("個人護理")}>
                 <a>個人護理</a>
@@ -187,40 +158,20 @@ const HomeComponent = (props) => {
               <td onClick={() => handleDifCatProducts("寵物")}>
                 <a>寵物</a>
               </td>
-              <td onClick={() => handleDifCatProducts("家務&居家")}>
-                <a>
-                  家務 <br />
-                  & <br />
-                  居家
-                </a>
+              <td onClick={() => handleDifCatProducts("家庭用品")}>
+                <a>家庭用品</a>
               </td>
-              <td onClick={() => handleDifCatProducts("運動&戶外")}>
-                <a>
-                  運動 <br />
-                  & <br />
-                  戶外
-                </a>
+              <td onClick={() => handleDifCatProducts("運動")}>
+                <a>運動</a>
               </td>
-              <td onClick={() => handleDifCatProducts("學校&辦公")}>
-                <a>
-                  學校 <br />
-                  & <br />
-                  辦公
-                </a>
+              <td onClick={() => handleDifCatProducts("辦公")}>
+                <a>辦公</a>
               </td>
-              <td onClick={() => handleDifCatProducts("派對&節慶")}>
-                <a>
-                  派對 <br />
-                  & <br />
-                  節慶
-                </a>
+              <td onClick={() => handleDifCatProducts("慶祝")}>
+                <a>慶祝</a>
               </td>
-              <td onClick={() => handleDifCatProducts("音樂&藝術")}>
-                <a>
-                  音樂 <br />
-                  & <br />
-                  藝術
-                </a>
+              <td onClick={() => handleDifCatProducts("藝術")}>
+                <a>藝術</a>
               </td>
               <td onClick={() => handleDifCatProducts("禮品")}>
                 <a>禮品</a>
@@ -234,17 +185,26 @@ const HomeComponent = (props) => {
       </div>
       <div className="display">
         <div className="title">商品種類</div>
-        <ProductDisplayComponent
-          data={data}
-          modalOpenIndex={modalOpenIndex}
-          setModalOpenIndex={setModalOpenIndex}
-        />
-        <div
-          className="moreProducts"
-          style={{ display: hasMoreProducts ? "block" : "none" }}
-        >
-          <button onClick={moreProducts}>更多商品</button>
-        </div>
+
+        {data ? (
+          <div>
+            <ProductDisplayComponent
+              data={data}
+              modalOpenIndex={modalOpenIndex}
+              setModalOpenIndex={setModalOpenIndex}
+            />
+            <div
+              className="moreProducts"
+              style={{ display: hasMoreProducts ? "flex" : "none" }}
+            >
+              <button onClick={moreProducts}>更多商品</button>
+            </div>
+          </div>
+        ) : (
+          <div className="spinner-container" style={{ position: "relative" }}>
+            <LoadingC />
+          </div>
+        )}
       </div>
     </main>
   );

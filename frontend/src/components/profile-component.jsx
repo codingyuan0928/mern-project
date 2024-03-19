@@ -16,7 +16,7 @@ function formatDate(purchaseTime) {
 
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
-const ProfileComponent = ({ identity, currentUser, setCurrentUser }) => {
+const ProfileComponent = ({ identity, currentUser }) => {
   // little nav bar部分
   let [activeLink, setActiveLink] = useState("全部");
   const [orders, setOrders] = useState([]);

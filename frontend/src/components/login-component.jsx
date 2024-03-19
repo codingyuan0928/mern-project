@@ -10,7 +10,6 @@ const LoginComponent = (props) => {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [message, setMessage] = useState("");
-  let [inputMemory, setInputMemory] = useState(true);
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -18,61 +17,34 @@ const LoginComponent = (props) => {
     setPassword(e.target.value);
   };
   useEffect(() => {
-    // 在 currentUser 更新後執行你的代碼
     console.log(currentUser);
   }, [currentUser]);
 
   const handleLogin = (e) => {
-    if (!inputMemory) {
-      e.preventDefault();
-      AuthService.login(email, password)
-        .then((response) => {
-          if (response.data.token) {
-            localStorage.setItem(
-              "user",
-              JSON.stringify({
-                token: response.data.token,
-                email: response.data.user.buyer.email,
-              })
-            );
-            console.log("成功將使用者資料放進localStorage");
-          }
-          window.alert("登入成功~即將為您導向買家購物清單!!!");
-          setCurrentUser(response.data.user);
-          setIdentity("buyer");
-          history.push("/profile");
-        })
-        .catch((error) => {
-          console.log(error.response);
-          setMessage(error.response.data);
-          emailInputRef.current.value = "";
-          passwordInputRef.current.value = "";
-        });
-    }
-    if (inputMemory) {
-      e.preventDefault();
-      AuthService.login(email, password)
-        .then((response) => {
-          if (response.data.token) {
-            localStorage.setItem(
-              "user",
-              JSON.stringify({
-                token: response.data.token,
-                email: response.data.user.buyer.email,
-              })
-            );
-            console.log("成功將使用者資料放進localStorage");
-          }
-          window.alert("登入成功~即將為您導向買家購物清單!!!");
-          setCurrentUser(response.data.user);
-          setIdentity("buyer");
-          history.push("/profile");
-        })
-        .catch((error) => {
-          console.log(error.response);
-          setMessage(error.response.data);
-        });
-    }
+    e.preventDefault();
+    AuthService.login(email, password)
+      .then((response) => {
+        if (response.data.token) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              token: response.data.token,
+              email: response.data.user.buyer.email,
+            })
+          );
+          console.log("成功將使用者資料放進localStorage");
+        }
+        window.alert("登入成功~即將為您導向買家購物清單!!!");
+        setCurrentUser(response.data.user);
+        setIdentity("buyer");
+        history.push("/profile");
+      })
+      .catch((error) => {
+        console.log(error.response);
+        setMessage(error.response.data);
+        emailInputRef.current.value = "";
+        passwordInputRef.current.value = "";
+      });
   };
   return (
     <div style={{ height: "100vh" }} className="login-page">
@@ -112,17 +84,6 @@ const LoginComponent = (props) => {
               <label htmlFor="floatingPassword">密碼</label>
             </div>
 
-            <div className="checkbox mb-3">
-              <label>
-                <input
-                  type="checkbox"
-                  checked={inputMemory}
-                  value="remember-me"
-                  onChange={(e) => setInputMemory(e.target.checked)}
-                />{" "}
-                記住我
-              </label>
-            </div>
             <button
               className="w-30 btn btn-lg btn-dark"
               type="submit"

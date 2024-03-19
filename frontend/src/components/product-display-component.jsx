@@ -1,11 +1,16 @@
 import React from "react";
+import LoadingC from "./Loading-component";
 
 const ProductDisplayComponent = (props) => {
-  const { data, modalOpenIndex, setModalOpenIndex } = props;
+  const { data, setModalOpenIndex } = props;
+
+  if (!data.data) {
+    return <LoadingC />;
+  }
 
   return (
     <div className="products">
-      {data && data.data && data.data.length > 0 ? (
+      {data.data && data.data.length > 0 ? (
         data.data.map((product, index) => (
           <div
             key={product._id}
@@ -33,9 +38,7 @@ const ProductDisplayComponent = (props) => {
             color: "rgba(139,0,0)",
           }}
         >
-          {data && data.data && data.data.length === 0
-            ? "目前架上沒有該種類商品!"
-            : "產品資料加載失敗，請重新整理，或稍後再試!!ヾ(￣□￣;)ﾉ"}
+          {data.data && data.data.length === 0 && "目前架上沒有該種類商品!"}
         </div>
       )}
     </div>

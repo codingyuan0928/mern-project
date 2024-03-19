@@ -3,14 +3,7 @@ import { useHistory } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 const RegisterComponent = (props) => {
-  const {
-    currentUser,
-    setCurrentUser,
-    identity,
-    setIdentity,
-    avatar,
-    setAvatar,
-  } = props;
+  const { currentUser, setCurrentUser, setIdentity, setAvatar } = props;
   const history = useHistory();
   const avatarInputRef = useRef(null);
   const sellerAvatarInputRef = useRef(null);

@@ -74,16 +74,11 @@ const NavBar = (props) => {
   return (
     <nav className="nav-container">
       <div className="navBrand">
-        <img
-          src={process.env.PUBLIC_URL + "/logos/BW.svg"}
-          alt="北威logo"
-          className="BW"
-        />
-        <span className="nav-title" onClick={() => resetPage()}>
+        <div className="nav-title" onClick={() => resetPage()}>
           <Link to="/" className="a">
             北威購物
           </Link>
-        </span>
+        </div>
       </div>
 
       <div className="nav-links">

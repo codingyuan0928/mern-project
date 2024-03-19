@@ -4,23 +4,20 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import cartsService from "../services/carts.service";
 import productsService from "../services/products.service";
 import ordersService from "../services/orders.service";
+import LoadingC from "./Loading-component";
 import {
   PayPalScriptProvider,
   PayPalButtons,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 
-const ShoppingCartComponent = ({
-  quantity,
-  setQuantity,
-  handleQuantityChange,
-  currentUser,
-}) => {
+const ShoppingCartComponent = ({ currentUser }) => {
   const [cartItems, setCartItems] = useState([]);
   const [shopChecked, setShopChecked] = useState({});
   const [itemChecked, setItemChecked] = useState({});
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [checkoutClicked, setCheckoutClicked] = useState(false);
+  const [Loading, setLoading] = useState(true);
   const history = useHistory();
   const userId = currentUser._id;
 
@@ -60,6 +57,7 @@ const ShoppingCartComponent = ({
   }, []);
 
   const getCartItems = () => {
+    setCartItems([]);
     cartsService
       .getCartItems(userId)
       .then((response) => {
@@ -75,14 +73,15 @@ const ShoppingCartComponent = ({
       .catch((err) => {
         if (err.response && err.response.status === 404) {
           // 如果是 404 錯誤，表示購物車為空，可以顯示提示文字
-          setCartItems([]); // 將購物車設為空陣列
           forceUpdate();
+          setLoading(false);
         } else {
           // 如果是其他錯誤，請在控制台顯示錯誤信息
           console.error("Error fetching cart items:", err);
         }
       });
   };
+
   //react強制手動渲染
   const forceUpdate = () => {
     setCartItems((prev) => [...prev]);
@@ -255,27 +254,6 @@ const ShoppingCartComponent = ({
     return totalPrice;
   };
 
-  const handleSelectAllCheckboxChange = () => {
-    setSelectAllChecked(!selectAllChecked);
-
-    const updatedShopChecked = {};
-    const updatedItemChecked = { ...itemChecked };
-
-    cartItems.forEach((cart) => {
-      Object.entries(cart.items).forEach(([shopname, products]) => {
-        updatedShopChecked[shopname] = !selectAllChecked;
-
-        products.forEach((product) => {
-          updatedItemChecked[product._id] =
-            updatedShopChecked[shopname] && !itemChecked[product._id];
-        });
-      });
-    });
-
-    setShopChecked(updatedShopChecked);
-    setItemChecked(updatedItemChecked);
-  };
-
   const handleCheckOutClick = () => {
     setCheckoutClicked(true);
   };
@@ -336,17 +314,23 @@ const ShoppingCartComponent = ({
     position: "relative",
     top: "0rem",
     width: "15rem",
-    left: "20vw",
+    left: "2vw",
     marginRight: "1rem",
   };
-
+  if (!Loading) {
+    return (
+      <div style={{ height: "45vh" }}>
+        <div className="empty-cart-message" style={{ fontSize: "2rem" }}>
+          您的購物車目前是空的，請再接再厲(ง๑ •̀_•́)ง!!
+        </div>
+      </div>
+    );
+  }
   return (
     <PayPalScriptProvider options={initialOptions}>
       <div className="sc-page" style={{ minHeight: "100vh" }}>
         {cartItems.length === 0 ? (
-          <div className="empty-cart-message" style={{ fontSize: "2rem" }}>
-            您的購物車目前是空的，請再接再厲(ง๑ •̀_•́)ง!!
-          </div>
+          <LoadingC />
         ) : (
           <div>
             {" "}
@@ -472,12 +456,6 @@ const ShoppingCartComponent = ({
               </div>
             )}
             <div className="last-block">
-              <input
-                type="checkbox"
-                checked={selectAllChecked}
-                onChange={() => handleSelectAllCheckboxChange()}
-              />
-              <div className="select-all">全選</div>
               <div className="payment-group">
                 <div
                   className="total-price"
